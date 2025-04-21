@@ -1,0 +1,51 @@
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getPokemonById = void 0;
+//defino una constante para importar  y que me desestructure las propiedades
+//del modulo http junto con require que me marca la ruta del plugin
+const http_client_plugin_1 = require("../plugins/http-client.plugin");
+//creo una funcion flecha llmada getpo-kemonid asincronica que me devolvera 
+//una promesa y le paso un parametro llamdo id
+//se usa await para esperar a que una promesa se resuelva
+//sinbloquear el codigo 
+const getPokemonById = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+        const pokemon = yield http_client_plugin_1.httpClientPlugin.get(url);
+        return pokemon.name;
+    }
+    catch (error) {
+        throw `pokemon not found with id ${id}`;
+    }
+    //creo una constante llamada url para almcenar la url de la api
+    //que contiene los personajes de de pokemon uso `` y 
+    // template lieterals para introducir
+    //en este caso un parametro que es el id de mi pokemon que es donde dicho
+    //se almacenara
+    //con await(espera hasta que la promesa de la solicitud http se resuelva)
+    //  http.get(http es el modulo que
+    // importe y el contiene el gestor de paquetes axios que es 
+    // un plugin que me hara consultas a mi api) 
+    // introduzco la url de mi api y consultare los datos
+    //de mi api en este caso personajes y los obtendre
+    // const resp = await fetch( url );
+    // const pokemon = await resp.json();
+    // throw new Error('Pokemon no existe');
+    //retorno osea develvo lo almacenado en pokemon
+    //y el .name es para obetener la propiedad
+    //por ejemplo si el pokemos es pikachu,pokemon.name devolvera pikachu
+    // return fetch( url )
+    //   .then( ( resp ) => resp.json())
+    //   // .then( () => { throw new Error('Pokemon no existe') })
+    //   .then( ( pokemon ) => pokemon.name );
+});
+exports.getPokemonById = getPokemonById;
