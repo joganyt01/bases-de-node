@@ -18,7 +18,9 @@ describe('js-foundation/02-destructuring.ts', () => {
 
   test('first character should be flash y superman', () => {
     //
-    expect(cosas[0].nombre).toBe("Lapicero");
+
+    expect(characters[0]).toBe("Flash");
+    expect(characters[1]).toBe("Superman");
     // expect(characters[2]).toBe('Green Lantern');
 
 

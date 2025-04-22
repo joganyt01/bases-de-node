@@ -201,7 +201,9 @@ solicitedUrl().then( ( johan ) => console.log(johan) )
 
 
 
+const dbPassword = process.env.DB_PASS; // 👍 Mucho mejor
 
+console.log(dbPassword+"hey");
 
 
 

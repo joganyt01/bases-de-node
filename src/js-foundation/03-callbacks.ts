@@ -50,4 +50,30 @@ export const getUserBy=( id:number, callback:(err?:string, user?:use)=>void )=>{
   return callback( undefined, user );
 }
 
+interface carros{
+  cars:string;
+  placa:number;
+}
+
+
 //llamo ala funcion module.export 
+const car:carros[] =[
+  
+  {
+    cars:"toyota",
+    placa:6,
+  },
+  {
+    cars:"renault",
+    placa:5,
+  },
+  {
+    cars:"ford",
+    placa:7,
+  },
+  {
+    cars:"nissan",
+    placa:2,
+  }
+]
+
