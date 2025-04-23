@@ -5,7 +5,7 @@
 
 
 import { getAge, getUUID, httpClientPlugin as http} from "././plugins";
-import { getUserBy } from "././js-foundation/03-callbacks";
+import { bycarsperson, getUserBy } from "././js-foundation/03-callbacks";
 import { example } from "././js-foundation/01-template";
 import  fs from "fs/promises";
 import  path from "path";
@@ -198,16 +198,20 @@ solicitedUrl().then( ( johan ) => console.log(johan) )
 //digo finalmente
 .catch( ( err ) => console.error( err ) ).finally( () => console.log('Finalmente') );
 
+const placa=1;
+
+bycarsperson(placa,(err,cars)=>{
+
+    if(err){
+        
+    console.log("error",err);
+    return;      
+    }
 
 
-
-const dbPassword = process.env.DB_PASS; // 👍 Mucho mejor
-
-console.log(dbPassword+"hey");
-
-
-
-
- 
+     console.log(`Se encontro el carro ${JSON.stringify(cars)}`);
+   
+   
+}) 
 
 
