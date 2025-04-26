@@ -2,9 +2,9 @@
 //const { getAge, getUUID } = require('./plugins');
 // const getAge = require('get-age');
 // const plugin=require('./plugins');
-
-
-import { getAge, getUUID, httpClientPlugin as http} from "././plugins";
+import{v4 as uuidv4} from 'uuid';
+import{multioption}from '././js-foundation/05-factory';
+import {  httpClientPlugin as http} from "././plugins";
 import { bycarsperson, getUserBy } from "././js-foundation/03-callbacks";
 import { example } from "././js-foundation/01-template";
 import  fs from "fs/promises";
@@ -14,6 +14,7 @@ import { text } from "stream/consumers";
 
 import axios from "axios";
 import { promises } from "dns";
+import { buildmakecar } from "././js-foundation/05-factory";
 // const { emailTemplate } = require('./js-foundation/01-template');
 // require('./js-foundation/02-destructuring');
 // const { getUserById } = require('./js-foundation/03-callbacks');
@@ -197,7 +198,7 @@ solicitedUrl().then( ( johan ) => console.log(johan) )
 // finally para cerrar la promesa y por consola 
 //digo finalmente
 .catch( ( err ) => console.error( err ) ).finally( () => console.log('Finalmente') );
-
+/*
 const placa=1;
 
 bycarsperson(placa,(err,cars)=>{
@@ -212,6 +213,28 @@ bycarsperson(placa,(err,cars)=>{
      console.log(`Se encontro el carro ${JSON.stringify(cars)}`);
    
    
-}) 
+})
+    */  
+// Implementaciones de las funciones requeridas
+const getUUID = () => uuidv4();  // o cualquier función que genere un string
+const getAge = (birthdate: string) => {
+  return new Date().getFullYear()-new Date(birthdate).getFullYear();
+  
+};
+
+// Paso 1: construir el factory con las funciones necesarias
+const makeCar = buildmakecar({ getUUID, getAge });
+
+// Paso 2: usar la función retornada con los datos del auto
+const carros = makeCar({
+  car: "renault",
+  birthdate: "2001-10-01"
+});
+
+console.log(carros);
+
+
+
+
 
 

@@ -16,6 +16,29 @@ describe('js.foundation/03-callbacks.ts', () => {
             done()
         });
 
+        test('should be car is he renault',(done)=>{
+
+          const placa=2;
+          const car='renault';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+
+        });
+
 
 
     });

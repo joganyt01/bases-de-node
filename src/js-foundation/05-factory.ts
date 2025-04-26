@@ -1,3 +1,5 @@
+import { getAge, getUUID } from "plugins";
+
 interface buildoptions{
      getUUID:()=>string;
      getAge:(birthdate:string)=>number;
@@ -33,6 +35,7 @@ export const buildMakePerson = ({ getUUID, getAge }:buildoptions) => {
       //age le agrego la funcion getage y le meto entre parentesis
       //el parametro birthdate para calcular la edad
       age: getAge(birthdate),
+
     }
   }
 
@@ -46,4 +49,23 @@ export const buildMakePerson = ({ getUUID, getAge }:buildoptions) => {
 
 // console.log(john);
 
+export interface multioption{
+  getUUID:()=>string,
+  getAge:(birthdate:string)=>number  
+}
 
+interface propertyscars{
+  car:string,
+  birthdate:string
+}
+
+export const buildmakecar=({getUUID,getAge}:multioption)=>{
+
+  return ({car,birthdate}:propertyscars)=>{
+     return{
+      car:car,
+      placa:getUUID(),
+      birthdate:getAge(birthdate)
+     }
+  };
+};
